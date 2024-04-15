@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/api")
 public class HomeController {
     
-    @PostMapping("/home")
+    @PostMapping("/home/{nombre}")
     public String home(@PathVariable String nombre) {      
         return "Hola: ";
     }
