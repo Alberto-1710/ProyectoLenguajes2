@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -26,20 +25,19 @@ public class Usuarios {
     private String usuario;
     private String contrasenia;
 
-@OneToOne
+@OneToOne(mappedBy = "usuarios")
 private Personas personas;
 
-@OneToOne
-private VendedorPedidos vendedorPedidos;
+/*@OneToOne
+private VendedorPedidos vendedorPedidos;*/
 
-@OneToMany
+@OneToMany(mappedBy = "usuarios")
 private List<Productos> productos;
     
-@OneToMany
-@JoinColumn(name="idpedido",referencedColumnName="idpedido")
+@OneToMany(mappedBy = "usuarios")
 private List<Pedidos> pedidos;
 
-@OneToOne
+@OneToOne(mappedBy = "usuarios")
 private Facturas facturas;
 }
 

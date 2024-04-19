@@ -26,6 +26,7 @@ public class Productos {
     private  String descripcion;
     private  String codigo;
     private double impuesto;
+
     @Column(name="cantidadstock")
     private long cantidadStock;
 
@@ -34,10 +35,11 @@ public class Productos {
     private Categorias categorias;
 
     @ManyToOne
+    @JoinColumn(name="idusuario", referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
-    @OneToMany
-    private List<FacturasDetalles> facturasDetalles;
+    @OneToMany(mappedBy = "productos")
+    private List<FacturasDetalle> facturasDetalles;
 
 
 

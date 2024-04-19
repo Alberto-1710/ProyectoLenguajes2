@@ -21,23 +21,35 @@ public class Personas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpersona")
     private long idPersona;
+
+    @Column(name = "primernombre")
     private String primerNombre;
+
+    @Column(name = "segundonombre")
     private String segundoNombre;
+
+    @Column(name = "primerapellido")
     private String primerApellido;
+
+    @Column(name = "segundoapellido")
     private String segundoApellido;
+
     private String telefono;
     private String correo;
     private String dni;
     private String genero;
+
+    @Column(name = "fechanacimiento")
     private Date fechaNacimineto;
+
+    @OneToOne
+    @JoinColumn(name="idusuario",referencedColumnName = "idusuario")
+    private Usuarios usuarios;
 
    @OneToOne
    @JoinColumn(name="idireccion",referencedColumnName = "iddireccion")
    private Direcciones direcciones;
 
-   @OneToOne
-   @JoinColumn(name="idusuario",referencedColumnName = "idusuario")
-   private Usuarios usuarios;
-
+  
 }
 

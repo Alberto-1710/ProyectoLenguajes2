@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "direcciones")
+@Table(name = "pedidos")
 @Data
 public class Pedidos {
     
@@ -22,18 +22,20 @@ public class Pedidos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpedido")
     private long idPedido;
+
     private String estado;
     private LocalDate fecha;
+
+    @Column(name = "horarecepcion")
     private String horaRecepcion;
 
     @ManyToOne
+    @JoinColumn(name="idusuario",referencedColumnName="idusuario")
     private Usuarios usuarios;
     
     @OneToOne
     @JoinColumn(name="idfactura", referencedColumnName="idfactura")
     private Facturas facturas;
 
-    @ManyToOne
-    private VendedorPedidos vendedorPedidos;
 
 }

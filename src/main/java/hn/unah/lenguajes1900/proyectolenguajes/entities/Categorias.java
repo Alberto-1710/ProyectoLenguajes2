@@ -15,8 +15,9 @@ public class Categorias {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCategoria;
+
     private String nombre;
 
-    @OneToOne
+    @OneToOne(mappedBy = "categorias")
     private Productos productos;
 }

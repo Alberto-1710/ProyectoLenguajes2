@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -22,24 +23,28 @@ public class Facturas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idfactura")
     private long idFactura;
+
     @Column(name="numerofactura")
     private long NumeroFactura;
+
     private LocalDate fecha;
     private String RTN;
     private double ISV15;
     private double total;
     
     @OneToOne
+    @JoinColumn(name="idusuario", referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
+    @OneToOne
+    @JoinColumn(name="idmetodopago", referencedColumnName="idmetodopago")
+    private MetodosPago metodosPago;
 
     @OneToOne(mappedBy = "facturas")
     private Pedidos pedidos;
 
-    @OneToMany
-    private List<FacturasDetalles> facturasDetalles;
+    @OneToMany(mappedBy = "facturas")
+    private List<FacturasDetalle> facturasDetalle;
 
-    @OneToMany
-    @JoinColumn(name="idmetodopago",referencedColumnName="idmetodopago")
-    private  List<MetodosPago> metodosPagos; 
+    
 }

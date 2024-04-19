@@ -28,4 +28,5 @@ public class Direcciones {
     @OneToOne(mappedBy = "direcciones")
     private Personas personas;
 
+    
 }
