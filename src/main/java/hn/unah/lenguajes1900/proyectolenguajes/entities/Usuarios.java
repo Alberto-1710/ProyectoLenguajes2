@@ -2,6 +2,8 @@ package hn.unah.lenguajes1900.proyectolenguajes.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,18 +27,21 @@ public class Usuarios {
     private String usuario;
     private String contrasenia;
 
+@JsonIgnore
 @OneToOne(mappedBy = "usuarios")
 private Personas personas;
 
 /*@OneToOne
 private VendedorPedidos vendedorPedidos;*/
-
+@JsonIgnore
 @OneToMany(mappedBy = "usuarios")
 private List<Productos> productos;
-    
+
+@JsonIgnore
 @OneToMany(mappedBy = "usuarios")
 private List<Pedidos> pedidos;
 
+@JsonIgnore
 @OneToOne(mappedBy = "usuarios")
 private Facturas facturas;
 }

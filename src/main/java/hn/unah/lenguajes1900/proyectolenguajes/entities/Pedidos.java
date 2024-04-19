@@ -1,13 +1,17 @@
 package hn.unah.lenguajes1900.proyectolenguajes.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -37,5 +41,10 @@ public class Pedidos {
     @JoinColumn(name="idfactura", referencedColumnName="idfactura")
     private Facturas facturas;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="vendedorpedido", 
+               joinColumns = @JoinColumn(name="idpedido"),
+               inverseJoinColumns = @JoinColumn(name="idusuario"))
+    private List<Usuarios> usuario;
 
 }

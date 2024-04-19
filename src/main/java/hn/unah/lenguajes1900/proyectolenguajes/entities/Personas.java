@@ -47,7 +47,7 @@ public class Personas {
     private Usuarios usuarios;
 
    @OneToOne
-   @JoinColumn(name="idireccion",referencedColumnName = "iddireccion")
+   @JoinColumn(name="iddireccion",referencedColumnName = "iddireccion")
    private Direcciones direcciones;
 
   
