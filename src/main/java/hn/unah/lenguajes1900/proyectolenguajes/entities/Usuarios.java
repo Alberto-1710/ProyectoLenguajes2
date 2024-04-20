@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ private VendedorPedidos vendedorPedidos;*/
 private List<Productos> productos;
 
 @JsonIgnore
-@OneToMany(mappedBy = "usuarios")
+@OneToMany(cascade=CascadeType.ALL,mappedBy = "usuarios")
 private List<Pedidos> pedidos;
 
 @JsonIgnore

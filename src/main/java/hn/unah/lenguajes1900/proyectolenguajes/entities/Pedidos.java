@@ -3,6 +3,8 @@ package hn.unah.lenguajes1900.proyectolenguajes.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,10 +35,12 @@ public class Pedidos {
     @Column(name = "horarecepcion")
     private String horaRecepcion;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idusuario",referencedColumnName="idusuario")
     private Usuarios usuarios;
     
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name="idfactura", referencedColumnName="idfactura")
     private Facturas facturas;
