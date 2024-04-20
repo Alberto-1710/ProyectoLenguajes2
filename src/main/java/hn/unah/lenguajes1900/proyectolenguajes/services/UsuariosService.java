@@ -5,5 +5,7 @@ import hn.unah.lenguajes1900.proyectolenguajes.entities.Usuarios;
 public interface UsuariosService {
     
     public Usuarios crearUsuario(Usuarios usuarios);
+
+    public boolean validarUsuario(Usuarios usuarios);
     
 }

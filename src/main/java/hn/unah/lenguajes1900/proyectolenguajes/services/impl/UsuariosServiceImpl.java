@@ -16,6 +16,15 @@ public class UsuariosServiceImpl implements UsuariosService {
     public Usuarios crearUsuario(Usuarios usuarios) {
         return this.usuariosRepository.save(usuarios);
     }
+
+    @Override
+    public boolean validarUsuario(Usuarios usuarios) {
+        Usuarios validar = this.usuariosRepository.findByUsuario(usuarios.getUsuario());
+        return validar != null && validar.getContrasenia().equals(usuarios.getContrasenia());
+
+    }
+
+   
     
     
 }
