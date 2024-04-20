@@ -18,10 +18,15 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public boolean validarUsuario(Usuarios usuarios) {
+    public String validarUsuario(Usuarios usuarios) {
         Usuarios validar = this.usuariosRepository.findByUsuario(usuarios.getUsuario());
-        return validar != null && validar.getContrasenia().equals(usuarios.getContrasenia());
-
+        if (validar != null) {
+            if(validar.getContrasenia().equals(usuarios.getContrasenia())){
+                return "Usuario válido, inicio de sesión exitoso.";    
+            }
+            return "Contraseña incorrecta";
+        }
+        return "Usuario no existe";
     }
 
    

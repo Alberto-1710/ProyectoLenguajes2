@@ -6,6 +6,6 @@ public interface UsuariosService {
     
     public Usuarios crearUsuario(Usuarios usuarios);
 
-    public boolean validarUsuario(Usuarios usuarios);
+    public String validarUsuario(Usuarios usuarios);
     
 }

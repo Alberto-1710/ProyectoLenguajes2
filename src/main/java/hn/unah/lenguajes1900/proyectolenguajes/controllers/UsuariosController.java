@@ -23,11 +23,7 @@ public class UsuariosController {
 
     @PostMapping("/usuario/login")
     public String login(@RequestBody Usuarios usuarios) {
-        if (usuariosServiceImpl.validarUsuario(usuarios)) {
-            return "Usuario válido. Inicio sesión exitoso.";
-        } else {
-            return "Usuario inválido. Iniciar sesión fallido.";
-        }
+        return this.usuariosServiceImpl.validarUsuario(usuarios);
     }
     
 }
