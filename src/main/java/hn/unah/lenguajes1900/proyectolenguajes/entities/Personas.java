@@ -1,6 +1,7 @@
 package hn.unah.lenguajes1900.proyectolenguajes.entities;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,13 +41,13 @@ public class Personas {
     private String genero;
 
     @Column(name = "fechanacimiento")
-    private Date fechaNacimineto;
+    private Date fechaNacimiento;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idusuario",referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
-   @OneToOne
+   @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name="iddireccion",referencedColumnName = "iddireccion")
    private Direcciones direcciones;
 
