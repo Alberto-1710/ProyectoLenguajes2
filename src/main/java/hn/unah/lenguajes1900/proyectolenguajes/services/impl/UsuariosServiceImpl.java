@@ -1,6 +1,8 @@
 package hn.unah.lenguajes1900.proyectolenguajes.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import hn.unah.lenguajes1900.proyectolenguajes.entities.Usuarios;
@@ -18,15 +20,15 @@ public class UsuariosServiceImpl implements UsuariosService {
     }
 
     @Override
-    public String validarUsuario(Usuarios usuarios) {
+    public ResponseEntity<String> validarUsuario(Usuarios usuarios) {
         Usuarios validar = this.usuariosRepository.findByUsuario(usuarios.getUsuario());
         if (validar != null) {
             if(validar.getContrasenia().equals(usuarios.getContrasenia())){
-                return "Usuario válido, inicio de sesión exitoso.";    
+                return ResponseEntity.ok("Usuario válido, inicio de sesión exitoso.");    
             }
-            return "Contraseña incorrecta";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta");
         }
-        return "Usuario no existe";
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no existe");
     }
 
    

@@ -1,6 +1,7 @@
 package hn.unah.lenguajes1900.proyectolenguajes.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,9 @@ public class UsuariosController {
     }
 
     @PostMapping("/usuario/login")
-    public String login(@RequestBody Usuarios usuarios) {
-        return this.usuariosServiceImpl.validarUsuario(usuarios);
+    public ResponseEntity<String> validarUsuario(@RequestBody Usuarios usuarios) {
+        ResponseEntity<String> response = usuariosServiceImpl.validarUsuario(usuarios);
+        return response;
     }
     
 }
