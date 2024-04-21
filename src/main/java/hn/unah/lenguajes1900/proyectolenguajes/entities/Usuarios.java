@@ -10,6 +10,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -38,9 +41,14 @@ private VendedorPedidos vendedorPedidos;*/
 @OneToMany(mappedBy = "usuarios")
 private List<Productos> productos;
 
-@JsonIgnore
-@OneToMany(cascade=CascadeType.ALL,mappedBy = "usuarios")
+@ManyToMany(cascade = CascadeType.ALL)
+@JoinTable(name="vendedorpedido", 
+           joinColumns = @JoinColumn(name="idusuario"),
+           inverseJoinColumns = @JoinColumn(name="idpedido"))
 private List<Pedidos> pedidos;
+
+
+
 
 @JsonIgnore
 @OneToOne(mappedBy = "usuarios")

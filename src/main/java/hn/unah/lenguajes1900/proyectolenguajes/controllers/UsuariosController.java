@@ -27,5 +27,7 @@ public class UsuariosController {
         ResponseEntity<String> response = usuariosServiceImpl.validarUsuario(usuarios);
         return response;
     }
+
+    
     
 }
