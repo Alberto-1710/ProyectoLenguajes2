@@ -1,6 +1,7 @@
 package hn.unah.lenguajes1900.proyectolenguajes.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -95,6 +96,11 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     }
 
+    public Usuarios obtenerUsuarioPorId(long idusuario) {
+        Optional<Usuarios> usuarioOptional = this.usuariosRepository.findById(idusuario);
+        return usuarioOptional.orElse(null); // Devuelve el usuario si se encuentra, o null si no se encuentra
+    }
+    
    
     
     
