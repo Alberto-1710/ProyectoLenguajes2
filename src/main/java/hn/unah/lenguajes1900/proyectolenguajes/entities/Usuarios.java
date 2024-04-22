@@ -38,7 +38,7 @@ private Personas personas;
 /*@OneToOne
 private VendedorPedidos vendedorPedidos;*/
 
-@OneToMany(cascade = CascadeType.ALL,mappedBy = "productos")
+@OneToMany(cascade = CascadeType.ALL,mappedBy = "usuarios")
 private List<Productos> productos;
 
 @ManyToMany(cascade = CascadeType.ALL)

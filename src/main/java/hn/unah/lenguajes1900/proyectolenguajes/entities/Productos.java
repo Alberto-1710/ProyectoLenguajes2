@@ -28,10 +28,7 @@ public class Productos {
     private  String nombre;
     private  double precio;
     private  String descripcion;
-<<<<<<< HEAD
-  
-=======
->>>>>>> 0986f3f5c20f4c5d55c7b8c9bd39c24f33d5c6a8
+
 
     @Column(name="cantidadstock")
     private long cantidadStock;
@@ -40,12 +37,12 @@ public class Productos {
     @JoinColumn(name="idcategoria",referencedColumnName = "idcategoria")
     private Categorias categorias;
 
-<<<<<<< HEAD
+   
+    
+
+
+    
     @ManyToOne(cascade = CascadeType.ALL)
-=======
-    @JsonIgnore
-    @ManyToOne
->>>>>>> 0986f3f5c20f4c5d55c7b8c9bd39c24f33d5c6a8
     @JoinColumn(name="idusuario", referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
