@@ -37,8 +37,8 @@ private Personas personas;
 
 /*@OneToOne
 private VendedorPedidos vendedorPedidos;*/
-@JsonIgnore
-@OneToMany(mappedBy = "usuarios")
+
+@OneToMany(cascade = CascadeType.ALL,mappedBy = "usuarios")
 private List<Productos> productos;
 
 @ManyToMany(cascade = CascadeType.ALL)

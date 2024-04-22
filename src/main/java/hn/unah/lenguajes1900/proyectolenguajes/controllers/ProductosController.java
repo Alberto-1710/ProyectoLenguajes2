@@ -16,7 +16,7 @@ public class ProductosController {
     @Autowired
     private ProductosServiceImpl productosServiceImpl;
 
-    @PostMapping("producto/crear")
+    @PostMapping("/producto/crear")
     public Productos crearProducto(@RequestBody Productos productos) {
     return this.productosServiceImpl.crearProducto(productos);
     }

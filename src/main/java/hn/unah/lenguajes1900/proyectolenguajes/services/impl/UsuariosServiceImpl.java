@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import hn.unah.lenguajes1900.proyectolenguajes.entities.Pedidos;
 import hn.unah.lenguajes1900.proyectolenguajes.entities.Usuarios;
 import hn.unah.lenguajes1900.proyectolenguajes.repositories.PedidosRepository;
+import hn.unah.lenguajes1900.proyectolenguajes.repositories.ProductosRepository;
 import hn.unah.lenguajes1900.proyectolenguajes.repositories.RolesRepository;
 import hn.unah.lenguajes1900.proyectolenguajes.repositories.UsuariosRepository;
 import hn.unah.lenguajes1900.proyectolenguajes.services.UsuariosService;
@@ -22,6 +23,8 @@ public class UsuariosServiceImpl implements UsuariosService {
     private PedidosRepository pedidosRepository;
     @Autowired
     private RolesRepository rolesRepository;
+    @Autowired
+    private ProductosRepository productosRepository;
 
     @Override
     public Usuarios crearUsuario(Usuarios usuarios) {
@@ -56,7 +59,22 @@ public class UsuariosServiceImpl implements UsuariosService {
         }
         return null;
     }
+    @Override
+    public Usuarios agregarProductoUsuario(long idusuario, long idproducto) {
+        if(this.usuariosRepository.existsById(idusuario)){
+            if(this.productosRepository.existsById(idproducto)){
+                Usuarios usuario=this.usuariosRepository.findById(idusuario).get();
+                usuario.getProductos().add(this.productosRepository.findById(idproducto).get());
+                return usuario;
+            }
+        }
+        return null;
+    }
 
+
+
+
+    @Override
     public Usuarios agregarRolUsuario(long idusuario,long idrol){
         if(this.usuariosRepository.existsById(idusuario)){
             if(this.rolesRepository.existsById(idrol)){

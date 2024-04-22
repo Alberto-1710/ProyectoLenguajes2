@@ -1,5 +1,6 @@
 package hn.unah.lenguajes1900.proyectolenguajes.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,8 +25,7 @@ public class Productos {
     private  String nombre;
     private  double precio;
     private  String descripcion;
-    private  String codigo;
-    private double impuesto;
+  
 
     @Column(name="cantidadstock")
     private long cantidadStock;
@@ -34,7 +34,7 @@ public class Productos {
     @JoinColumn(name="idcategoria",referencedColumnName = "idcategoria")
     private Categorias categorias;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idusuario", referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
