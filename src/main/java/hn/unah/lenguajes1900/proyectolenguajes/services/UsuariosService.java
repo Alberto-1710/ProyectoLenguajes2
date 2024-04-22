@@ -16,5 +16,6 @@ public interface UsuariosService {
     public List<Usuarios> obtenerUsuarios();
     
     public Usuarios agregarPedidoUsuario (long idusuario,long idpedido);
+    public Usuarios agregarRolUsuario(long idusuario,long idrol);
     public List<Pedidos> obtenerPedidosdeUsuario (long usuario);
 }

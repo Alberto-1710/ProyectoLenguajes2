@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import hn.unah.lenguajes1900.proyectolenguajes.entities.Pedidos;
 import hn.unah.lenguajes1900.proyectolenguajes.entities.Usuarios;
 import hn.unah.lenguajes1900.proyectolenguajes.repositories.PedidosRepository;
+import hn.unah.lenguajes1900.proyectolenguajes.repositories.RolesRepository;
 import hn.unah.lenguajes1900.proyectolenguajes.repositories.UsuariosRepository;
 import hn.unah.lenguajes1900.proyectolenguajes.services.UsuariosService;
 @Service
@@ -19,6 +20,8 @@ public class UsuariosServiceImpl implements UsuariosService {
     private UsuariosRepository usuariosRepository;
     @Autowired
     private PedidosRepository pedidosRepository;
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @Override
     public Usuarios crearUsuario(Usuarios usuarios) {
@@ -48,6 +51,17 @@ public class UsuariosServiceImpl implements UsuariosService {
             if(this.pedidosRepository.existsById(idpedido)){
                 Usuarios usuario=this.usuariosRepository.findById(idusuario).get();
                 usuario.getPedidos().add(this.pedidosRepository.findById(idpedido).get());
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Usuarios agregarRolUsuario(long idusuario,long idrol){
+        if(this.usuariosRepository.existsById(idusuario)){
+            if(this.rolesRepository.existsById(idrol)){
+                Usuarios usuario=this.usuariosRepository.findById(idusuario).get();
+                usuario.getRoles().add(this.rolesRepository.findById(idrol).get());
                 return usuario;
             }
         }

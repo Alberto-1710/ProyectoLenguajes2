@@ -25,10 +25,6 @@ public class Roles {
     private long idRol;
     private String nombre;
 
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="usuarioroles", 
-               joinColumns = @JoinColumn(name="idrol"),
-               inverseJoinColumns = @JoinColumn(name="idusuario"))
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "roles")
     private List<Usuarios> usuarios;
 }

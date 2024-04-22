@@ -47,7 +47,11 @@ private List<Productos> productos;
            inverseJoinColumns = @JoinColumn(name="idpedido"))
 private List<Pedidos> pedidos;
 
-
+@ManyToMany(cascade = CascadeType.ALL)
+@JoinTable(name="usuarioroles", 
+           joinColumns = @JoinColumn(name="idusuario"),
+           inverseJoinColumns = @JoinColumn(name="idrol"))
+private List<Roles> roles;
 
 
 @JsonIgnore

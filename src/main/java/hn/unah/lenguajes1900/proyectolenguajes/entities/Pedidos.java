@@ -39,11 +39,11 @@ public class Pedidos {
     @JoinColumn(name="idusuario",referencedColumnName="idusuario")
     private Usuarios usuarios;*/
     
-    @JsonIgnore
+    
     @OneToOne
     @JoinColumn(name="idfactura", referencedColumnName="idfactura")
     private Facturas facturas;
 
-    @ManyToMany(mappedBy = "pedidos")
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "pedidos")
     private List<Usuarios> usuarios;
 }

@@ -36,9 +36,9 @@ public class Personas {
     private String segundoApellido;
 
     private String telefono;
-    private String correo;
+    private String email;
     private String dni;
-    private String genero;
+    private char genero;
 
     @Column(name = "fechanacimiento")
     private Date fechaNacimiento;
