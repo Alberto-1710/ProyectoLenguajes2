@@ -1,5 +1,6 @@
 package hn.unah.lenguajes1900.proyectolenguajes.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -24,20 +28,20 @@ public class Productos {
     private  String nombre;
     private  double precio;
     private  String descripcion;
-    private  String codigo;
-    private double impuesto;
 
     @Column(name="cantidadstock")
     private long cantidadStock;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idcategoria",referencedColumnName = "idcategoria")
     private Categorias categorias;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idusuario", referencedColumnName = "idusuario")
     private Usuarios usuarios;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "productos")
     private List<FacturasDetalle> facturasDetalles;
 

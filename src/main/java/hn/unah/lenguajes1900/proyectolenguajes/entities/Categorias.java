@@ -1,5 +1,8 @@
 package hn.unah.lenguajes1900.proyectolenguajes.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +17,12 @@ import lombok.Data;
 public class Categorias {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idcategoria")
     private long idCategoria;
 
-    private String nombre;
+    private char nombre;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "categorias")
     private Productos productos;
 }
